@@ -14,6 +14,7 @@ router.get("", (req, res) => {
   res.render("index", { locals });
 });
 
+
 function insertAuthorData() {
   Author.insertMany([{
     name: "J.K. Rowling",

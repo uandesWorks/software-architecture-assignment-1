@@ -1,1 +1,60 @@
-<h1> Home </h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Home</title>
+</head>
+
+<body>
+   <h1>Home</h1>
+
+   <form id="addBookForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="summary">Summary:</label>
+      <textarea id="summary" name="summary" required></textarea>
+
+      <label for="publication_date">Publication Date:</label>
+      <input type="date" id="publication_date" name="publication_date" required>
+
+      <label for="sales">Sales:</label>
+      <input type="number" id="sales" name="sales" required>
+
+      <button type="submit">Add Book</button>
+   </form>
+
+   <script>
+      const addBookForm = document.getElementById('addBookForm');
+
+      addBookForm.addEventListener('submit', async (event) => {
+         event.preventDefault();
+
+         const formData = new FormData(addBookForm);
+         const bookData = Object.fromEntries(formData.entries());
+
+         try {
+            const response = await fetch('/books', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(bookData),
+            });
+
+            if (!response.ok) {
+               throw new Error('Failed to add book');
+            }
+
+            const book = await response.json();
+
+            // Clear the form after successful submission
+            addBookForm.reset();
+         } catch (error) {
+            console.error('Error:', error.message);
+         }
+      });
+   </script>
+</body>
+
+</html>

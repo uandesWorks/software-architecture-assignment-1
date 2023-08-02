@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts')
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const connectDB = require('./server/config/db')
 
 const app = express();
@@ -20,7 +20,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.json());
 app.use("/", require('./server/routes/main'))
 app.use("/books", require('./server/routes/bookRoutes'))
-
+app.use("/reviews", require('./server/routes/reviewRoutes'));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

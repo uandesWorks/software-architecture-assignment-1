@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "seedData": "node populate_fakeDB/fakeAuthors.js && node populate_fakeDB/fakeBooks.js"
+    "seedData": "node populate_fakeDB/fakeAuthors.js && node populate_fakeDB/fakeBooks.js",
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -w public/stylesheets/style.css"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

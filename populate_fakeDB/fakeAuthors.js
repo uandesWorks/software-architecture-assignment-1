@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const casual = require("casual");
 const Author = require("../server/models/Author");
 
-const numberOfAuthors = 50; 
-
 require("dotenv").config();
+
+const numberOfAuthors = 50; 
 
 function generateAuthor() {
   return {
@@ -23,7 +23,6 @@ async function seedData() {
       useUnifiedTopology: true,
     });
 
-    
     await Author.deleteMany({});
 
     const authors = Array.from({ length: numberOfAuthors }, generateAuthor);

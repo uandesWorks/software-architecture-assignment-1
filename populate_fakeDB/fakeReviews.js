@@ -21,6 +21,8 @@ async function seedData() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    
+    await Review.deleteMany({});
 
     const books = await Book.find();
 

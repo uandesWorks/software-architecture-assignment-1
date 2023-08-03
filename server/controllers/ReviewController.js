@@ -38,12 +38,14 @@ exports.getReviewById = async (req, res) => {
 // Update a review by ID
 exports.updateReview = async (req, res) => {
   try {
-    const { book, review, score, up_votes } = req.body;
+    const { bookId, review, score, up_votes } = req.body;
+
     const updatedReview = await Review.findByIdAndUpdate(
       req.params.id,
-      { book, review, score, up_votes },
+      { book: bookId, review, score, up_votes },
       { new: true }
     );
+
     res.json(updatedReview);
   } catch (err) {
     res.status(400).json({ error: err.message });

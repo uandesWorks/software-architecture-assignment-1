@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use("/", require('./server/routes/main'))
 app.use("/books", require('./server/routes/bookRoutes'))
 app.use("/reviews", require('./server/routes/reviewRoutes'));
+app.use("/sales", require('./server/routes/saleRoutes'));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

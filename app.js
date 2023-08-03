@@ -22,7 +22,7 @@ app.set('view engine', 'ejs')
 // Routes
 app.use(bodyParser.json());
 app.use("/", require('./server/routes/main'))
-app.use('/authors', require('./server/controllers/AuthorController'));
+app.use('/authors', require('./server/routes/authorRoutes'));
 app.use("/books", require('./server/routes/bookRoutes'))
 app.use("/reviews", require('./server/routes/reviewRoutes'));
 app.use("/sales", require('./server/routes/saleRoutes'));

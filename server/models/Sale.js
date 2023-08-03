@@ -2,16 +2,17 @@ const mongoose = require('mongoose');
 
 const SalesSchema = new mongoose.Schema({
   book: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Book",
+    required: true,
   },
   year: {
     type: Number,
-    required: true
+    required: true,
   },
   sales: {
     type: Number,
-    required: true
+    required: true,
   },
 });
 

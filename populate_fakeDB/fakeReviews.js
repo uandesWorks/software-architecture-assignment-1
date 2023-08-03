@@ -16,7 +16,7 @@ function generateReview(bookId) {
 
 async function seedData() {
   try {
-    console.log("Seeding Reviews...");
+    console.log("\x1b[32mSeeding Reviews...\x1b[0m");
     await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

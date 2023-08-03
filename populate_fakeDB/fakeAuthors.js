@@ -17,7 +17,8 @@ function generateAuthor() {
 
 async function seedData() {
   try {
-    console.log("Seeding Authors...");
+    console.log("\x1b[32mSeeding Authors...\x1b[0m");
+
     await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

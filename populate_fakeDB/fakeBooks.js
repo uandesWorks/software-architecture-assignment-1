@@ -9,8 +9,7 @@ const numberOfBooks = 300;
 
 async function seedData() {
    try {
-     console.log("Seeding Books...");
-
+    console.log("\x1b[32mSeeding Books...\x1b[0m");
     await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

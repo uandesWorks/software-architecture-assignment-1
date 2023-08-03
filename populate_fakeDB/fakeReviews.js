@@ -7,10 +7,10 @@ require("dotenv").config();
 
 function generateReview(bookId) {
   return {
-    book: bookId,
-    review: casual.sentences(n = 2),
-    score: casual.integer(from = 1, to = 5),
-    up_votes: casual.integer(from = 0, to = 100),
+    book_id: bookId,
+    review: casual.sentences((n = 2)),
+    score: casual.integer((from = 1), (to = 5)),
+    up_votes: casual.integer((from = 0), (to = 100)),
   };
 }
 

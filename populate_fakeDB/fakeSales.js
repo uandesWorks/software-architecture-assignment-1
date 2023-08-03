@@ -14,9 +14,9 @@ function generateSales(bookId) {
    for (let year = currentYear - numberOfYears + 1; year <= currentYear; year++)
    {
       const sale = {
-        book: bookId,
+        book_id: bookId,
         year: year,
-        sales: casual.integer(1, 100), 
+        sales: casual.integer(1, 100),
       };
       salesData.push(sale);
   }

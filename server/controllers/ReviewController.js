@@ -38,11 +38,11 @@ exports.getReviewById = async (req, res) => {
 // Update a review by ID
 exports.updateReview = async (req, res) => {
   try {
-    const { bookId, review, score, up_votes } = req.body;
+    const { book_id, review, score, up_votes } = req.body;
 
     const updatedReview = await Review.findByIdAndUpdate(
       req.params.id,
-      { book: bookId, review, score, up_votes },
+      { book_id, review, score, up_votes },
       { new: true }
     );
 

@@ -37,10 +37,10 @@ exports.getSaleById = async (req, res) => {
 // Update a sale by ID
 exports.updateSale = async (req, res) => {
   try {
-    const { bookId, year, sales } = req.body; 
+    const { book_id, year, sales } = req.body; 
     const updatedSale = await Sale.findByIdAndUpdate(
       req.params.id,
-      { book: bookId, year, sales }, 
+      { book_id, year, sales },
       { new: true }
     );
     res.json(updatedSale);

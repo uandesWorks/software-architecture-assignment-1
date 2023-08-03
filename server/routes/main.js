@@ -1,4 +1,5 @@
 const express = require("express");
+const Author = require("../models/Author");
 const router = express.Router();
 
 router.get("", (req, res) => {
@@ -13,19 +14,24 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
-router.get("/books", (req, res) => {
+router.get("/booksView", (req, res) => {
   res.render("books");
 });
 
-router.get("/sales", (req, res) => {
+router.get("/salesView", (req, res) => {
   res.render("sales");
 });
 
-router.get("/authors", (req, res) => {
-  res.render("authors");
+router.get("/authorsView", async (req, res) => {
+  try {
+    const allAuthors = await Author.find();
+    res.render("authors", { allAuthors }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching authors" });
+  }
 });
 
-router.get("/reviews", (req, res) => {
+router.get("/reviewsView", (req, res) => {
   res.render("reviews");
 });
 

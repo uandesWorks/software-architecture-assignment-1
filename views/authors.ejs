@@ -2,6 +2,13 @@
     <div class="w-full text-5xl font-semibold italic text-center pt-5">
         Authors
     </div>
+    <div>
+        <% allAuthors.forEach(element => { %>
+            <div>
+                <%= element.name %>
+            </div>
+        <% }) %>
+    </div>
 </div>
 <script>
     

@@ -9,7 +9,7 @@
    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-   <header class="flex h-[10vh] bg-white border shadow-xl">
+   <header class="flex h-[10vh] w-screen bg-white border shadow-xl">
       <div class="w-[10%] z-50">
          <a href="/" class="w-full">
             <svg viewBox="0 0 491 218" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
@@ -37,28 +37,63 @@
             </svg>
          </a>
       </div>
-      <div class="flex my-auto mx-4 text-3xl">
-         <div id="authors" class=" w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold hidden">
+      <div id="navigationNavbar" class="flex w-[60%] my-auto mx-4 text-3xl">
+         <div class=" w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold">
             <a class="w-full h-full" href="/authorsView">
                Authors
             </a>
          </div>
-         <div id="books" class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold hidden">
+         <div class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold">
             <a class="w-full h-full" href="/booksView">
                Books
             </a>
          </div>
-         <div id="reviews" class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold hidden">
+         <div class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold">
             <a class="w-full h-full" href="/reviewsView">
                Reviews
             </a>
          </div>
-         <div id="sales" class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold hidden">
+         <div class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold">
             <a class="w-full h-full" href="/salesView">
                Sales
             </a>
          </div>
+         <div class="w-24 cursor-pointer mx-5 text-center hover:text-gray-400 hover:font-semibold">
+            <a class="w-full h-full" href="/informationView">
+               Information
+            </a>
+         </div>
+      </div>
+      <div id="searchNavbar" class="flex w-[30%] justify-end pr-10">
+         <input class="w-[50%] h-10 border border-black my-auto px-3 rounded-lg" type="text">
+         <div class="text-xl h-10 my-auto ml-4">
+            <button class="border h-full px-3 py-auto rounded-lg border-black bg-gray-100 hover:bg-gray-300">Search</button>
+         </div>
       </div>
    </header>
+   <div id="modal" class="z-50 absolute flex justify-center top-0 w-screen h-screen hidden">
+      <div class="flex justify-center top-0 w-screen h-screen z-50">
+          <div id="blackModal" class="absolute top-0  w-full h-full bg-black opacity-80 z-50"></div>
+          <div class="absolute z-50 opacity-100 w-2/5">
+              <div class="absolute w-full bg-white rounded top-[50vh] -translate-y-[75%] px-12 py-8">
+                  <div class="text-3xl mb-7 my-auto font-semibold">
+                      Are you sure about delete this row..
+                  </div>
+                  <div class="flex justify-between w-full">
+                      <div class="w-2/5">
+                          <button id="quitModal" class="w-full border border-secundary bg-gray-50 hover:bg-gray-100 hover:border-white py-2 px-6 text-center text-lg font-medium rounded-lg select-none">
+                              No, cancel pls
+                          </button>
+                      </div>
+                      <div class="w-2/5">
+                          <button class="w-full border border-secundary bg-gray-50 hover:bg-gray-100 hover:border-white py-2 px-6 text-center text-lg font-medium rounded-lg select-none">
+                              Yes, I am sure!
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
    <%- body%>
 </body>

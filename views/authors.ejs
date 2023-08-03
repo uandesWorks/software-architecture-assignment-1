@@ -1,25 +1,98 @@
-<div class="bg-slate-200 h-[90vh] bg-opacity-50 ">
-    <div class="w-full text-5xl font-semibold italic text-center pt-5">
-        Authors
-    </div>
-    <div>
-        <% allAuthors.forEach(element => { %>
-            <div>
-                <%= element.name %>
+
+<div class="bg-slate-200 h-[90vh] bg-opacity-50">
+    <div class="flex justify-between w-5/6 text-5xl mx-auto font-semibold italic text-center pt-5">
+        <div>
+            Authors CRUD
+        </div>
+        <div class="flex border-2 border-black hover:bg-white px-2 rounded-lg cursor-pointer">
+            <div class="mx-2 text-3xl my-auto not-italic">
+                Add new row
             </div>
-        <% }) %>
+            <div>
+                <div class=" rounded-full p-2">
+                    <div class="h-9 w-9">
+                        <svg viewBox="0 0 32 32">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                <g sketch:type="MSLayerGroup" transform="translate(-362.000000, -1037.000000)" fill="#000000">
+                                    <path d="M390,1049 L382,1049 L382,1041 C382,1038.79 380.209,1037 378,1037 C375.791,1037 374,1038.79 374,1041 L374,1049 L366,1049 C363.791,1049 362,1050.79 362,1053 C362,1055.21 363.791,1057 366,1057 L374,1057 L374,1065 C374,1067.21 375.791,1069 378,1069 C380.209,1069 382,1067.21 382,1065 L382,1057 L390,1057 C392.209,1057 394,1055.21 394,1053 C394,1050.79 392.209,1049 390,1049" sketch:type="MSShapeGroup"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="w-5/6 h-[75vh] mx-auto overflow-y-auto mt-5">
+        <table>
+            <thead>
+                <tr class=" sticky top-0 w-5/6 h-10 bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="w-2/12 py-3 px-6 text-left">Name</th>
+                    <th class="w-2/12 py-3 px-6 text-left">Birth</th>
+                    <th class="w-1/12 py-3 px-6 text-left">Country</th>
+                    <th class="w-5/12 py-3 px-6 text-left">Description</th>
+                    <th class="w-1/12 py-3 px-6 text-left"></th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <% allAuthors.forEach((element, index) => { %>
+                    <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
+                        <td class="w-2/12 py-3 px-6 whitespace-nowrap">
+                            <span class="font-medium"><%= element.name %></span>
+                        </td>
+                        <td class="w-2/12 py-3 px-6">
+                            <span><%= element.birth %></span>
+                        </td>
+                        <td class="w-1/12 py-3 px-6">
+                            <span><%= element.country %></span>
+                        </td>
+                        <td class="w-5/12 py-3 px-6">
+                            <span><%= element.description %></span>
+                        </td>
+                        <td class="w-1/12 py-3 px-6">
+                            <div class="flex justify-between px-2">
+                                <div id="editSvg" class="w-9 h-9 cursor-pointer">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M18.3785 8.44975L11.4637 15.3647C11.1845 15.6439 10.8289 15.8342 10.4417 15.9117L7.49994 16.5L8.08829 13.5582C8.16572 13.1711 8.35603 12.8155 8.63522 12.5363L15.5501 5.62132M18.3785 8.44975L19.7927 7.03553C20.1832 6.64501 20.1832 6.01184 19.7927 5.62132L18.3785 4.20711C17.988 3.81658 17.3548 3.81658 16.9643 4.20711L15.5501 5.62132M18.3785 8.44975L15.5501 5.62132" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 20H19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div id="<%=element.id%>" class="deleteSvg w-8 h-8 cursor-pointer">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 <script>
-    
-    let authors = document.getElementById("authors")
-    let books = document.getElementById("books")
-    let reviews = document.getElementById("reviews")
-    let sales = document.getElementById("sales")
 
-    authors.classList.toggle("hidden")
-    books.classList.toggle("hidden")
-    reviews.classList.toggle("hidden")
-    sales.classList.toggle("hidden")
+    let modal = document.getElementById("modal")
+    let blackModal = document.getElementById("blackModal")
+    let quitModal = document.getElementById("quitModal")
+    blackModal.addEventListener("click", function(){
+        modal.classList.toggle("hidden");
+    })
+    quitModal.addEventListener("click", function(){
+        modal.classList.toggle("hidden");
+    })
+
+    let deleteSvgs = document.querySelectorAll(".deleteSvg");
+
+    deleteSvgs.forEach((deleteSvg) => {
+        deleteSvg.addEventListener("click", function () {
+            modal.classList.toggle("hidden");
+        });
+    });
 
 </script>

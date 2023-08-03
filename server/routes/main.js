@@ -1,5 +1,8 @@
 const express = require("express");
 const Author = require("../models/Author");
+const Book = require("../models/Book");
+const Review = require("../models/Review");
+const Sale = require("../models/Sale");
 const router = express.Router();
 
 router.get("", (req, res) => {
@@ -8,18 +11,6 @@ router.get("", (req, res) => {
     description: "Assigment 01"
   }
   res.render("index", { locals });
-});
-
-router.get("/about", (req, res) => {
-  res.render("about");
-});
-
-router.get("/booksView", (req, res) => {
-  res.render("books");
-});
-
-router.get("/salesView", (req, res) => {
-  res.render("sales");
 });
 
 router.get("/authorsView", async (req, res) => {
@@ -31,8 +22,39 @@ router.get("/authorsView", async (req, res) => {
   }
 });
 
-router.get("/reviewsView", (req, res) => {
-  res.render("reviews");
+router.get("/booksView", async (req, res) => {
+  try {
+    const allBooks = await Book.find();
+    res.render("books", { allBooks }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching books" });
+  }
+});
+
+router.get("/reviewsView", async (req, res) => {
+  try {
+    const allReviews = await Review.find();
+    res.render("reviews", { allReviews }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching review" });
+  }
+});
+
+router.get("/salesView", async (req, res) => {
+  try {
+    const allSales = await Sale.find();
+    res.render("sales", { allSales }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching sales" });
+  }
+});
+
+router.get("/informationView", (req, res) => {
+  res.render("information");
+});
+
+router.get("/searchView", (req, res) => {
+  res.render("search");
 });
 
 module.exports = router;

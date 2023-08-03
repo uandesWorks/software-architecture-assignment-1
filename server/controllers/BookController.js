@@ -39,15 +39,12 @@ exports.updateBook = async (req, res) => {
   try {
     const { name, summary, publication_date, sales, author_id } = req.body;
 
-    // Prepare the update object
     const updateObj = { name, summary, publication_date, sales };
 
-    // Only add the author_id to the update object if it is provided in the request body
     if (author_id) {
       updateObj.author_id = author_id;
     }
 
-    // Update the book and return the updated document (new: true)
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, updateObj, {
       new: true,
     });

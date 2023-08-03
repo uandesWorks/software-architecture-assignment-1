@@ -5,8 +5,9 @@
   "main": "indes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js",
-    "dev": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seedData": "node populate_fakeDB/fakeAuthors.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -21,6 +22,10 @@
     "jsonwebtoken": "^9.0.1",
     "method-override": "^3.0.0",
     "mongoose": "^7.4.1",
+    "mongoose-fixture": "^0.4.1",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "casual": "^1.6.2"
   }
 }

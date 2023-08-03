@@ -8,9 +8,10 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "seedData": "node populate_fakeDB/fakeAuthors.js && node populate_fakeDB/fakeBooks.js",
-    "tailwind:css": "postcss public/stylesheets/tailwind.css -w public/stylesheets/style.css"
+    "tailwind:css": "npx postcss public/css/tailwind.css -o public/css/style.css --watch"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.14",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "connect-mongo": "^5.0.0",
@@ -24,7 +25,10 @@
     "method-override": "^3.0.0",
     "mongoose": "^7.4.1",
     "mongoose-fixture": "^0.4.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.27",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "casual": "^1.6.2"

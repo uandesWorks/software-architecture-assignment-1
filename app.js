@@ -11,6 +11,9 @@ const PORT = 8000 || process.env.PORT;
 // Connect to DB
 connectDB()
 
+//JSON Middleware
+app.use(express.json()); 
+
 // Templating Engine
 app.use(expressLayout)
 app.set('layout', './layouts/main')
@@ -19,6 +22,7 @@ app.set('view engine', 'ejs')
 // Routes
 app.use(bodyParser.json());
 app.use("/", require('./server/routes/main'))
+app.use('/authors', require('./server/controllers/AuthorController'));
 app.use("/books", require('./server/routes/bookRoutes'))
 app.use("/reviews", require('./server/routes/reviewRoutes'));
 app.use("/sales", require('./server/routes/saleRoutes'));

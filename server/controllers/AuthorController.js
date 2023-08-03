@@ -1,73 +1,64 @@
-const Author = require("../models/Author"); // Adjust the path as needed
+// controllers/authorController.js
+const Author = require("../models/Author");
 
 // Create a new author
 exports.createAuthor = async (req, res) => {
-    try {
-        console.log(req.body)
-        const newAuthor = await Author.create(req.body);
-        res.status(201).json(newAuthor);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
+  try {
+    const author = new Author(req.body);
+    await author.save();
+    res.status(201).json(author);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 // Get all authors
 exports.getAllAuthors = async (req, res) => {
-    try {
-        const authors = await Author.find();
-        res.json(authors);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const authors = await Author.find();
+    res.json(authors);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 // Get a specific author by ID
-exports.getAuthorById = getAuthor, (req, res) => {
-    res.json(res.author);
+exports.getAuthorById = async (req, res) => {
+  try {
+    const author = await Author.findById(req.params.id);
+    if (!author) {
+      return res.status(404).json({ message: "Author not found" });
+    }
+    res.json(author);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 // Update an author by ID
-exports.updatedAuthor = getAuthor, async (req, res) => {
-    try {
-        if (req.body.name != null) {
-            res.author.name = req.body.name;
-        }
-        if (req.body.birth != null) {
-            res.author.birth = req.body.birth;
-        }
-        if (req.body.country != null) {
-            res.author.country = req.body.country;
-        }
-        if (req.body.description != null) {
-            res.author.description = req.body.description;
-        }
-        const updatedAuthor = await res.author.save();
-        res.json(updatedAuthor);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
+exports.updateAuthor = async (req, res) => {
+  try {
+    const { name, birth, country, description } = req.body;
+    const updatedAuthor = await Author.findByIdAndUpdate(
+      req.params.id,
+      { name, birth, country, description },
+      { new: true }
+    );
+    res.json(updatedAuthor);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 // Delete an author by ID
-exports.deleteAuthor = getAuthor, async (req, res) => {
-    try {
-        await Author.findByIdAndRemove(req.params.id);
-        res.json({ message: 'Author deleted' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+exports.deleteAuthor = async (req, res) => {
+  try {
+    const author = await Author.findByIdAndDelete(req.params.id);
+    if (!author) {
+      return res.status(404).json({ message: "Author not found" });
     }
+    res.json({ message: "Author deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
-
-// Middleware to get author by ID
-async function getAuthor(req, res, next) {
-    try {
-        const author = await Author.findById(req.params.id);
-        if (author == null) {
-            return res.status(404).json({ message: 'Author not found' });
-        }
-        res.author = author;
-        next();
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-}

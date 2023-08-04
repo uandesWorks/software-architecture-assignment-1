@@ -81,7 +81,60 @@ exports.getAuthorsInformation = async (req, res) => {
 };
 
 // Top 10 rated Books
+exports.getTopRatedBooks = async (req, res) => {
+  try {
+  const books = await Book.find();
 
+  const topBooks = await Promise.all(
+    books.map(async (book) => {
+      const bookName = book.name;
+      const reviews = await Review.find({ book_id: book._id });
+      const totalReviews = reviews.length;
+
+      const positiveReviews = await Review.find({book_id: book._id});
+      var topPositiveReview = positiveReviews.sort((a, b) => b.score - a.score);
+      const highestScore = topPositiveReview[0].score;
+      topPositiveReview = topPositiveReview.filter((review) => review.score === highestScore);
+      const topPopularPositiveReview = topPositiveReview.sort((a,b) => b.up_votes - a.up_votes);
+      const popularPositiveReview = topPopularPositiveReview[0].review;
+      const popularPositiveScore = topPopularPositiveReview[0].score;
+
+      
+
+      const negativeReviews = await Review.find({book_id: book._id});
+      var topNegativeReview = negativeReviews.sort((a, b) => a.score - b.score);
+      const lowestScore = topNegativeReview[0].score;
+      topNegativeReview = topNegativeReview.filter((review) => review.score === lowestScore);
+      const topPopularNegativeReview = topNegativeReview.sort((a,b) => b.up_votes - a.up_votes);
+      const popularNegativeReview = topPopularNegativeReview[0].review;
+      const popularNegativeScore = topPopularNegativeReview[0].score;
+
+
+      const totalScore = reviews.reduce(
+        (total, review) => total + review.score,
+        0
+      );
+      const averageScore = totalScore / totalReviews || 0;
+
+      return {
+        bookName,
+        averageScore,
+        popularPositiveReview,
+        popularPositiveScore,
+        popularNegativeReview,
+        popularNegativeScore
+      };
+    })
+  );
+
+  topBooks.sort((a, b) => b.averageScore - a.averageScore);
+  const topTenBook = topBooks.slice(0, 10);
+  res.json({ topTenBook });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
 // Top 50 selling Books
 exports.top50SellingBooks = async (req, res) => {
    try {

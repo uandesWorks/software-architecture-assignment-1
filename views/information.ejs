@@ -1,14 +1,292 @@
-<% a = [{a:11}, {a:22}, {a:33}]  %>
-<div class="bg-slate-200 h-[90vh] bg-opacity-50 ">
+<% authorsDataTable = [{authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
+                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
+                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
+                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 }]  %>
+
+<% topRatedBooks = [{book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
+                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
+                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
+                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
+                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
+                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
+                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
+                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
+                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
+                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." }]  %>
+
+<% topSellingBooks = [{book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
+                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
+                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
+                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false }]%>
+
+<div class="flex flex-col justify-between bg-slate-200 h-[15vh] bg-opacity-50 ">
     <div class="w-full text-5xl font-semibold italic text-center pt-5">
         Information
     </div>
+    <div class="flex justify-center pb-5">
+        <div id="interactiveButton" class="z-40 transform duration-1000 absolute w-96 h-10 border border-black rounded-full bg-white"></div>
+        <div id="table1" class="z-50 w-96 h-10 text-center text-xl pt-1 cursor-pointer hover:font-bold">Authors data table</div>
+        <div id="table2" class="z-50 w-96 h-10 text-center text-xl pt-1 cursor-pointer hover:font-bold">Top 10 rated books</div>
+        <div id="table3" class="z-50 w-96 h-10 text-center text-xl pt-1 cursor-pointer hover:font-bold">Top 50 selling books</div>
+    </div>
+</div>
+<div id="movileTables" class="h-[75vh] w-full fixed transform duration-1000">
+    <div class="absolute h-[75vh] w-full -translate-x-full">
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[70vh] mx-auto overflow-y-auto">
+            <table class="w-4/5 mx-auto">
+                <thead>
+                    <tr class=" sticky top-0 w-5/6 h-10 bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            <div class="flex">
+                                <div class="mr-3">
+                                    Authors
+                                </div>
+                                <div class="w-5 h-5">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C12.2652 3 12.5196 3.10536 12.7071 3.29289L19.7071 10.2929C20.0976 10.6834 20.0976 11.3166 19.7071 11.7071C19.3166 12.0976 18.6834 12.0976 18.2929 11.7071L13 6.41421V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V6.41421L5.70711 11.7071C5.31658 12.0976 4.68342 12.0976 4.29289 11.7071C3.90237 11.3166 3.90237 10.6834 4.29289 10.2929L11.2929 3.29289C11.4804 3.10536 11.7348 3 12 3Z" fill="#000000"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            <div class="flex">
+                                <div class="mr-3">
+                                    Number of published books
+                                </div>
+                                <div class="w-5 h-5">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C12.2652 3 12.5196 3.10536 12.7071 3.29289L19.7071 10.2929C20.0976 10.6834 20.0976 11.3166 19.7071 11.7071C19.3166 12.0976 18.6834 12.0976 18.2929 11.7071L13 6.41421V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V6.41421L5.70711 11.7071C5.31658 12.0976 4.68342 12.0976 4.29289 11.7071C3.90237 11.3166 3.90237 10.6834 4.29289 10.2929L11.2929 3.29289C11.4804 3.10536 11.7348 3 12 3Z" fill="#000000"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            <div class="flex">
+                                <div class="mr-3">
+                                    Average scores
+                                </div>
+                                <div class="w-5 h-5">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C12.2652 3 12.5196 3.10536 12.7071 3.29289L19.7071 10.2929C20.0976 10.6834 20.0976 11.3166 19.7071 11.7071C19.3166 12.0976 18.6834 12.0976 18.2929 11.7071L13 6.41421V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V6.41421L5.70711 11.7071C5.31658 12.0976 4.68342 12.0976 4.29289 11.7071C3.90237 11.3166 3.90237 10.6834 4.29289 10.2929L11.2929 3.29289C11.4804 3.10536 11.7348 3 12 3Z" fill="#000000"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+    
+                            <div class="flex">
+                                <div class="mr-3">
+                                    Total sales
+                                </div>
+                                <div class="w-5 h-5">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C12.2652 3 12.5196 3.10536 12.7071 3.29289L19.7071 10.2929C20.0976 10.6834 20.0976 11.3166 19.7071 11.7071C19.3166 12.0976 18.6834 12.0976 18.2929 11.7071L13 6.41421V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V6.41421L5.70711 11.7071C5.31658 12.0976 4.68342 12.0976 4.29289 11.7071C3.90237 11.3166 3.90237 10.6834 4.29289 10.2929L11.2929 3.29289C11.4804 3.10536 11.7348 3 12 3Z" fill="#000000"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <% authorsDataTable.forEach((element, index) => { %>
+                        <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
+                            <td class="w-3/12 py-3 px-6 whitespace-nowrap">
+                                <span class="font-medium"><%= element.authors %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.booksNumber %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.avgScore %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.totalSales %></span>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[5vh]"></div>
+    </div>
+    <div class="absolute h-[75vh] w-full">
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[70vh] mx-auto overflow-y-auto">
+            <table class="w-4/5 mx-auto">
+                <thead>
+                    <tr class=" sticky top-0 w-5/6 h-10 bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            Books
+                        </th>
+                        <th class="w-1/12 py-3 px-6 text-left">
+                            Average Scores
+                        </th>
+                        <th class="w-4/12 py-3 px-6 text-left">
+                            Best reviews
+                        </th>
+                        <th class="w-4/12 py-3 px-6 text-left">
+                            Worst reviews
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <% topRatedBooks.forEach((element, index) => { %>
+                        <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
+                            <td class="w-3/12 py-3 px-6 whitespace-nowrap">
+                                <span class="font-medium"><%= element.book %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.avgScore %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.bestReview %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.worstReview %></span>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[5vh]"></div>
+    </div>
+    <div class="absolute h-[75vh] w-full translate-x-full">
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[70vh] mx-auto overflow-y-auto">
+            <table class="w-4/5 mx-auto">
+                <thead>
+                    <tr class=" sticky top-0 w-5/6 h-10 bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            Books
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            Total Sales of this Book
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            Total Sales of the Author
+                        </th>
+                        <th class="w-3/12 py-3 px-6 text-left">
+                            ¿Top 5 best seller in his year?
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <% topSellingBooks.forEach((element, index) => { %>
+                        <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
+                            <td class="w-3/12 py-3 px-6 whitespace-nowrap">
+                                <span class="font-medium"><%= element.book %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.totalBookSales %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <span><%= element.totalAuthorSales %></span>
+                            </td>
+                            <td class="w-3/12 py-3 px-6">
+                                <% if (element.topFiveInHisYear == true) {%>
+                                    <span class="text-green-800 font-bold">YES</span>
+                                <% } else { %>
+                                    <span class="text-red-500 font-semibold">NO</span>
+                                <% }%>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-slate-200 bg-opacity-50 w-full h-[5vh]"></div>
+    </div>
 </div>
 <script>
-    
-    let navigationNavbar = document.getElementById("navigationNavbar")
-    let searchNavbar = document.getElementById("searchNavbar")
-    navigationNavbar.classList.toggle("hidden")
-    searchNavbar.classList.toggle("hidden")
+
+    let table1 = document.getElementById("table1")
+    let table2 = document.getElementById("table2")
+    let table3 = document.getElementById("table3")
+    let interactiveButton = document.getElementById("interactiveButton")
+    let movileTables = document.getElementById("movileTables")
+
+    table1.addEventListener("click", function(){
+        interactiveButton.classList.add("-translate-x-[100%]");
+        interactiveButton.classList.remove("translate-x-[100%]");
+        movileTables.classList.remove("-translate-x-[100%]");
+        movileTables.classList.add("translate-x-[100%]");
+    })
+    table2.addEventListener("click", function(){
+        interactiveButton.classList.remove("-translate-x-[100%]");
+        interactiveButton.classList.remove("translate-x-[100%]");
+        movileTables.classList.remove("-translate-x-[100%]");
+        movileTables.classList.remove("translate-x-[100%]");
+    })
+    table3.addEventListener("click", function(){
+        interactiveButton.classList.remove("-translate-x-[100%]");
+        interactiveButton.classList.add("translate-x-[100%]");
+        movileTables.classList.add("-translate-x-[100%]");
+        movileTables.classList.remove("translate-x-[100%]");
+    })
 
 </script>

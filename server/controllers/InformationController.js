@@ -83,6 +83,39 @@ exports.getAuthorsInformation = async (req, res) => {
 // Top 10 rated Books
 
 // Top 50 selling Books
+// and if the book was the on the top 5 selling books the year of its publication.
+exports.top50SellingBooks = async (req, res) => {
+   try {
+      // top 50 selling books of all time
+      const books = await Book.find()
+        .sort({ sales: -1 })
+         .limit(50);
+            
+      const topSellingBooks = await Promise.all(
+         books.map(async (book) => {
+         
+         // total sales for the author  
+         const authorBooks = await Book.find({ author_id: book.author_id });
+         const totalAuthorSales = authorBooks.reduce(
+            (total, book) => total + book.sales,
+            0
+         );
+         
+        return {
+          bookName: book.name,
+          totalSales: book.sales, // showing their total sales for the book,
+          totalAuthorSales: totalAuthorSales,
+          isTop5Year: "add",
+        };
+      }));
+
+      res.json(topSellingBooks);
+   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 
 // Search Books Description
 exports.searchByDescription = async (req, res) => {

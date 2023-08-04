@@ -12,31 +12,38 @@ exports.getAuthorsInformation = async (req, res) => {
 
     const authorsData = await Promise.all(
        authors.map(async (author) => {
-          const authorName = author.name;
+         const authorName = author.name;
+
+         // publishedBooks
+         const publishedBooks = await Book.countDocuments({
+           author_id: author._id,
+         });
           
-        const publishedBooks = await Book.countDocuments({
-          author: author._id,
-        });
-         console.log(publishedBooks);
+
+         // averageScore
          const reviews = await Review.find({ book: { $in: [author._id] } });
-         console.log(reviews)
-        const totalReviews = reviews.length;
-        const totalScore = reviews.reduce(
-          (total, review) => total + review.score,
-          0
-        );
-        const averageScore = totalScore / totalReviews || 0;
+         console.log(reviews);
+         const totalReviews = reviews.length;
+         const totalScore = reviews.reduce(
+           (total, review) => total + review.score,
+           0
+         );
+         const averageScore = totalScore / totalReviews || 0;
 
-        const sales = await Sale.find({ book: { $in: [author._id] } });
-        const totalSales = sales.reduce((total, sale) => total + sale.sales, 0);
+         // totalSales
+         const sales = await Sale.find({ book: { $in: [author._id] } });
+         const totalSales = sales.reduce(
+           (total, sale) => total + sale.sales,
+           0
+         );
 
-        return {
-          authorName,
-          publishedBooks,
-          averageScore,
-          totalSales,
-        };
-      })
+         return {
+           authorName,
+           publishedBooks,
+           averageScore,
+           totalSales,
+         };
+       })
     );
 
 

@@ -3,11 +3,11 @@ const Book = require("../models/Book");
 const Review = require("../models/Review");
 const Sale = require("../models/Sale");
 
-// Shows authors, number of published books, average score and total sales. This table should have a sort and filter for each column.
 
 // Authors data Table
 exports.getAuthorsInformation = async (req, res) => {
   try {
+   
     const authors = await Author.find();
 
     const authorsData = await Promise.all(
@@ -15,7 +15,9 @@ exports.getAuthorsInformation = async (req, res) => {
         const publishedBooks = await Book.countDocuments({
           author: author._id,
         });
-        const reviews = await Review.find({ book: { $in: author.books } });
+         console.log(publishedBooks);
+         const reviews = await Review.find({ book: { $in: [author._id] } });
+         console.log(reviews)
         const totalReviews = reviews.length;
         const totalScore = reviews.reduce(
           (total, review) => total + review.score,
@@ -23,7 +25,7 @@ exports.getAuthorsInformation = async (req, res) => {
         );
         const averageScore = totalScore / totalReviews || 0;
 
-        const sales = await Sale.find({ book: { $in: author.books } });
+        const sales = await Sale.find({ book: { $in: [author._id] } });
         const totalSales = sales.reduce((total, sale) => total + sale.sales, 0);
 
         return {
@@ -34,6 +36,7 @@ exports.getAuthorsInformation = async (req, res) => {
         };
       })
     );
+
 
     // Sorting
     const { sort, order } = req.query;

@@ -27,6 +27,7 @@ app.use('/authors', require('./server/routes/authorRoutes'));
 app.use("/books", require('./server/routes/bookRoutes'))
 app.use("/reviews", require('./server/routes/reviewRoutes'));
 app.use("/sales", require('./server/routes/saleRoutes'));
+app.use("/information", require('./server/routes/informationRoutes'));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

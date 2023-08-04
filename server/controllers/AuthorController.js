@@ -1,4 +1,3 @@
-// controllers/authorController.js
 const Author = require("../models/Author");
 
 // Create a new author

@@ -83,7 +83,6 @@ exports.getAuthorsInformation = async (req, res) => {
 // Top 10 rated Books
 
 // Top 50 selling Books
-// and if the book was the on the top 5 selling books the year of its publication.
 exports.top50SellingBooks = async (req, res) => {
    try {
       // top 50 selling books of all time
@@ -93,21 +92,33 @@ exports.top50SellingBooks = async (req, res) => {
             
       const topSellingBooks = await Promise.all(
          books.map(async (book) => {
-         
-         // total sales for the author  
-         const authorBooks = await Book.find({ author_id: book.author_id });
-         const totalAuthorSales = authorBooks.reduce(
-            (total, book) => total + book.sales,
-            0
-         );
-         
-        return {
-          bookName: book.name,
-          totalSales: book.sales, // showing their total sales for the book,
-          totalAuthorSales: totalAuthorSales,
-          isTop5Year: "add",
-        };
-      }));
+
+           // total sales for the author
+           const authorBooks = await Book.find({ author_id: book.author_id });
+           const totalAuthorSales = authorBooks.reduce(
+             (total, book) => total + book.sales,
+             0
+           );
+            
+           // if the book was the on the top 5 selling books the year of its publication.
+            const publicationYear = new Date(book.publication_date).getFullYear();
+
+            const highestSales = await Sale.find({ year: publicationYear })
+              .sort({ sales: -1 })
+               .limit(5);
+            
+            const top5BookIds = highestSales.map((sale) =>
+              sale.book_id.toString()
+            );
+            const isTop5 = top5BookIds.includes(book._id.toString())
+              
+           return {
+             bookName: book.name,
+             totalSales: book.sales, 
+             totalAuthorSales: totalAuthorSales,
+             isTop5Year: isTop5,
+           };
+         }));
 
       res.json(topSellingBooks);
    } catch (err) {

@@ -11,7 +11,9 @@ exports.getAuthorsInformation = async (req, res) => {
     const authors = await Author.find();
 
     const authorsData = await Promise.all(
-      authors.map(async (author) => {
+       authors.map(async (author) => {
+          const authorName = author.name;
+          
         const publishedBooks = await Book.countDocuments({
           author: author._id,
         });
@@ -29,7 +31,7 @@ exports.getAuthorsInformation = async (req, res) => {
         const totalSales = sales.reduce((total, sale) => total + sale.sales, 0);
 
         return {
-          author,
+          authorName,
           publishedBooks,
           averageScore,
           totalSales,

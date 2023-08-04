@@ -42,34 +42,34 @@ exports.getAuthorsInformation = async (req, res) => {
          );
 
          return {
-           "author_name": authorName,
-           "published_books":publishedBooksCount,
-           "average_score":averageScore,
-           "total_sales":totalSales,
+           "authorName": authorName,
+           "publishedBooks":publishedBooksCount,
+           "averageScore":averageScore,
+           "totalSales":totalSales,
          };
        })
     );
 
 
-   // Sorting Bad
+   // Sorting
    const { sort, order } = req.body;
     if (sort === "publishedBooks") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.published_books - b.published_books
-          : b.published_books - a.published_books
+          ? a.publishedBooks - b.publishedBooks
+          : b.publishedBooks - a.publishedBooks
       );
     } else if (sort === "averageScore") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.average_score - b.average_score
-          : b.average_score - a.average_score
+          ? a.averageScore - b.averageScore
+          : b.averageScore - a.averageScore
       );
     } else if (sort === "totalSales") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.total_sales - b.total_sales
-          : b.total_sales - a.total_sales
+          ? a.totalSales - b.totalSales
+          : b.totalSales - a.totalSales
       );
     }
 
@@ -84,4 +84,21 @@ exports.getAuthorsInformation = async (req, res) => {
 
 // Top 50 selling Books
 
-// Search
+// Search Books Description
+exports.searchByDescription = async (req, res) => {
+  const { search } = req.body;
+   
+  try {
+    const searchWords = search.split(" ");
+
+    const regexQueries = searchWords.map((word) => ({
+      summary: { $regex: new RegExp(`\\b${word}\\b`, "i") },
+    }));
+
+    const books = await Book.find({ $and: regexQueries });
+
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

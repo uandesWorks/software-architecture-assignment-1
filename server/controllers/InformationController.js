@@ -14,15 +14,16 @@ exports.getAuthorsInformation = async (req, res) => {
        authors.map(async (author) => {
          const authorName = author.name;
 
-         // publishedBooks
-         const publishedBooks = await Book.countDocuments({
+         // publishedBooksCount
+         const publishedBooks = await Book.find({
            author_id: author._id,
          });
-          
+         const publishedBooksCount = publishedBooks.length;
 
          // averageScore
-         const reviews = await Review.find({ book: { $in: [author._id] } });
-         console.log(reviews);
+         const reviews = await Review.find({
+            book_id: { $in: publishedBooks.map((book) => book._id) },
+          });
          const totalReviews = reviews.length;
          const totalScore = reviews.reduce(
            (total, review) => total + review.score,
@@ -31,41 +32,47 @@ exports.getAuthorsInformation = async (req, res) => {
          const averageScore = totalScore / totalReviews || 0;
 
          // totalSales
-         const sales = await Sale.find({ book: { $in: [author._id] } });
+         const sales = await Sale.find({
+            book_id: { $in: publishedBooks.map((book) => book._id) },
+         });
+
          const totalSales = sales.reduce(
            (total, sale) => total + sale.sales,
            0
          );
 
          return {
-           authorName,
-           publishedBooks,
-           averageScore,
-           totalSales,
+           "author_name": authorName,
+           "published_books":publishedBooksCount,
+           "average_score":averageScore,
+           "total_sales":totalSales,
          };
        })
     );
 
 
-    // Sorting
-    const { sort, order } = req.query;
+    // Sorting Bad
+     const { sort, order } = req.body;
+     console.log("Sort:", sort);
+     console.log("Order:", order);
+
     if (sort === "publishedBooks") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.publishedBooks - b.publishedBooks
-          : b.publishedBooks - a.publishedBooks
+          ? a.published_books - b.published_books
+          : b.published_books - a.published_books
       );
     } else if (sort === "averageScore") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.averageScore - b.averageScore
-          : b.averageScore - a.averageScore
+          ? a.average_score - b.average_score
+          : b.average_score - a.average_score
       );
     } else if (sort === "totalSales") {
       authorsData.sort((a, b) =>
         order === "asc"
-          ? a.totalSales - b.totalSales
-          : b.totalSales - a.totalSales
+          ? a.total_sales - b.total_sales
+          : b.total_sales - a.total_sales
       );
     }
 

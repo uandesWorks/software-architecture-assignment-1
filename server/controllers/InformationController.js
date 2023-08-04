@@ -51,11 +51,8 @@ exports.getAuthorsInformation = async (req, res) => {
     );
 
 
-    // Sorting Bad
-     const { sort, order } = req.body;
-     console.log("Sort:", sort);
-     console.log("Order:", order);
-
+   // Sorting Bad
+   const { sort, order } = req.body;
     if (sort === "publishedBooks") {
       authorsData.sort((a, b) =>
         order === "asc"

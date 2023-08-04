@@ -1,14 +1,14 @@
-<% a = [{a:11}, {a:22}, {a:33}]  %>
+<% bookDescription = [{book:"The odissey", description:"This books is related with.."}, {book:"Only life", description:"The life is a instace of a little reality of a big general constraint.."}, {book:"Remember you", description:"As a little family in Chicago, this story tell about.."}]  %>
 <div class="bg-slate-200 h-[90vh] bg-opacity-50 select-none">
-    <div class="w-full text-5xl font-semibold italic text-center pt-5">
-        Search
+    <div class="w-4/5 text-3xl font-semibold italic text-left pt-5 mx-auto">
+        Search classified the next results..
+    </div>
+    <div class="w-4/5 mx-auto overflow-y-auto">
+        <% bookDescription.forEach((element) => { %>
+            <div class="flex my-4">
+                <div class="h-2 w-2 rounded-full border border-black bg-black my-auto mr-3"></div>
+                <div> <span class=" font-bold"><%= element.book %> :</span> <%= element.description %> &nbsp; </div>
+            </div>
+        <% }) %>
     </div>
 </div>
-<script>
-    
-    let navigationNavbar = document.getElementById("navigationNavbar")
-    let searchNavbar = document.getElementById("searchNavbar")
-    navigationNavbar.classList.toggle("hidden")
-    searchNavbar.classList.toggle("hidden")
-
-</script>

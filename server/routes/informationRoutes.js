@@ -1,1 +1,4 @@
-// here is there is the connections between tables
+const express = require("express");
+const informationController = require("../controllers/AuthorController");
+
+const router = express.Router();

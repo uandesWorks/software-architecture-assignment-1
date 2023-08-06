@@ -31,7 +31,6 @@ async function seedData() {
 
     console.log(`${numberOfAuthors} authors have been added to the database.`);
 
-    // Disconnect from MongoDB
     await mongoose.disconnect();
   } catch (error) {
     console.error("Error seeding the database:", error);

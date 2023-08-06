@@ -26,7 +26,10 @@ async function seedData() {
         summary: casual.sentences(3),
         publication_date: casual.date("YYYY-MM-DD"),
         sales: 0,
-        author_id: randomAuthor._id, 
+        author: {
+          _id: randomAuthor._id,
+          name: randomAuthor.name,
+        },
       };
     });
 

@@ -7,14 +7,17 @@ require("dotenv").config();
 
 const numberOfYears = 5; 
 
-function generateSales(bookId) {
+function generateSales(bookId, bookName) {
   const salesData = [];
   const currentYear = new Date().getFullYear();
 
    for (let year = currentYear - numberOfYears + 1; year <= currentYear; year++)
    {
       const sale = {
-        book_id: bookId,
+        book: {
+          _id: bookId,
+          name: bookName,
+        },
         year: year,
         sales: casual.integer(1, 100),
       };
@@ -36,7 +39,7 @@ async function seedData() {
 
     const books = await Book.find({});
     const salesData = books.reduce((sales, book) => {
-      const bookSales = generateSales(book._id);
+      const bookSales = generateSales(book._id, book.name);
 
       const bookSalesCount = bookSales.reduce(
         (total, sale) => total + sale.sales,

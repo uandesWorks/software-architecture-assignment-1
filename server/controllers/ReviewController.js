@@ -14,7 +14,7 @@ exports.createReview = async (req, res) => {
 // Get all reviews
 exports.getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const reviews = await Review.find().populate('book', '_id name');;
     res.json(reviews);
   } catch (err) {
     res.status(500).json({ error: err.message });

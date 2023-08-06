@@ -14,7 +14,7 @@ exports.createBook = async (req, res) => {
 // Get all books
 exports.getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find();
+    const books = await Book.find().populate('author', '_id name');
     res.json(books);
   } catch (err) {
     res.status(500).json({ error: err.message });

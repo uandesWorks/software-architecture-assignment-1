@@ -20,7 +20,7 @@ exports.createSale = async (req, res) => {
 // Get all sales
 exports.getAllSales = async (req, res) => {
   try {
-    const sales = await Sale.find();
+    const sales = await Sale.find().populate('book', '_id name');;
     res.json(sales);
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -5,9 +5,12 @@ const Book = require("../server/models/Book");
 
 require("dotenv").config();
 
-function generateReview(bookId) {
+function generateReview(bookId, bookName) {
   return {
-    book_id: bookId,
+    book: {
+      _id: bookId,
+      name: bookName,
+    },
     review: casual.sentences((n = 2)),
     score: casual.integer((from = 1), (to = 5)),
     up_votes: casual.integer((from = 0), (to = 100)),
@@ -29,7 +32,7 @@ async function seedData() {
     for (const book of books) {
       const numberOfReviews = casual.integer(from = 1, to = 10);
       for (let j = 0; j < numberOfReviews; j++) {
-        const reviewData = generateReview(book._id);
+        const reviewData = generateReview(book._id, book.name);
         const review = new Review(reviewData);
         await review.save();
       }

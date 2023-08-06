@@ -25,8 +25,8 @@ async function seedData() {
         name: casual.title,
         summary: casual.sentences(3),
         publication_date: casual.date("YYYY-MM-DD"),
-        sales: casual.integer(1000, 100000),
-        author_id: randomAuthor._id, // Assign a random author's _id to the book
+        sales: 0,
+        author_id: randomAuthor._id, 
       };
     });
 

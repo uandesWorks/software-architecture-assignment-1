@@ -26,18 +26,25 @@ function generateSales(bookId) {
 
 async function seedData() {
   try {
-     console.log("\x1b[32mSeeding Sales...\x1b[0m");
+    console.log("\x1b[32mSeeding Sales...\x1b[0m");
     await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
 
     await Sale.deleteMany({});
-     
-    const books = await Book.find({});
 
+    const books = await Book.find({});
     const salesData = books.reduce((sales, book) => {
       const bookSales = generateSales(book._id);
+
+      const bookSalesCount = bookSales.reduce(
+        (total, sale) => total + sale.sales,
+        0
+      );
+      book.sales += bookSalesCount;
+      book.save();
+
       return sales.concat(bookSales);
     }, []);
 

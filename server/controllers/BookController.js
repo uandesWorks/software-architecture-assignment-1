@@ -1,4 +1,5 @@
 const Book = require("../models/Book");
+const Author = require("../models/Author");
 
 // Create a new book
 exports.createBook = async (req, res) => {
@@ -37,12 +38,17 @@ exports.getBookById = async (req, res) => {
 // Update a book by ID
 exports.updateBook = async (req, res) => {
   try {
-    const { name, summary, publication_date, sales, author_id } = req.body;
+    const { name, summary, publication_date, sales, author } = req.body;
 
-    const updateObj = { name, summary, publication_date, sales };
+    const updateObj = { name, summary, publication_date, sales, author };
 
-    if (author_id) {
-      updateObj.author_id = author_id;
+    if (author) {
+      const newAuthor = await Author.findById(author._id, 'name');
+      if (!newAuthor) {
+        return res.status(404).json({ error: "Author not found" });
+      }
+      updateObj.author._id = newAuthor._id;
+      updateObj.author.name = newAuthor.name;
     }
 
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, updateObj, {

@@ -1,9 +1,15 @@
 const Review = require("../models/Review");
+const Book = require("../models/Book");
 
 // Create a new Review
 exports.createReview = async (req, res) => {
   try {
     const review = new Review(req.body);
+    const bookName = await Book.findById(review.book._id, 'name');
+      if (!bookName) {
+        return res.status(404).json({ error: "Book not found" });
+      }
+      review.book.name = bookName.name;
     await review.save();
     res.status(201).json(review);
   } catch (err) {
@@ -38,12 +44,23 @@ exports.getReviewById = async (req, res) => {
 // Update a review by ID
 exports.updateReview = async (req, res) => {
   try {
-    const { book_id, review, score, up_votes } = req.body;
+    const { book, review, score, up_votes } = req.body;
+
+    const updateObj = {book, review, score, up_votes };
+
+    if (book) {
+      const newBook = await Book.findById(book._id, 'name');
+      if (!newBook) {
+        return res.status(404).json({ error: "Book not found" });
+      }
+      updateObj.book._id = newBook._id;
+      updateObj.book.name = newBook.name;
+    }
 
     const updatedReview = await Review.findByIdAndUpdate(
-      req.params.id,
-      { book_id, review, score, up_votes },
-      { new: true }
+      req.params.id, updateObj, {
+         new: true 
+        }
     );
 
     res.json(updatedReview);

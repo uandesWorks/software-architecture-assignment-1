@@ -4,6 +4,8 @@ const Book = require("../models/Book");
 const Review = require("../models/Review");
 const Sale = require("../models/Sale");
 const router = express.Router();
+const fetch = require("node-fetch");
+
 
 router.get("", (req, res) => {
   const locals = {
@@ -15,8 +17,12 @@ router.get("", (req, res) => {
 
 router.get("/authorsView", async (req, res) => {
   try {
-    const allAuthors = await Author.find();
-    res.render("authors", { allAuthors }); 
+    const response = await fetch("http://localhost:8000/authors");
+    const data = await response.json();
+
+    const allAuthors = data; 
+
+    res.render("authors", { allAuthors });
   } catch (error) {
     res.status(500).json({ error: "Error fetching authors" });
   }
@@ -24,8 +30,12 @@ router.get("/authorsView", async (req, res) => {
 
 router.get("/booksView", async (req, res) => {
   try {
-    const allBooks = await Book.find();
-    res.render("books", { allBooks }); 
+    const response = await fetch("http://localhost:8000/books");
+    const data = await response.json();
+    
+    const allBooks = data; 
+
+    res.render("books", { allBooks });
   } catch (error) {
     res.status(500).json({ error: "Error fetching books" });
   }
@@ -33,8 +43,12 @@ router.get("/booksView", async (req, res) => {
 
 router.get("/reviewsView", async (req, res) => {
   try {
-    const allReviews = await Review.find();
-    res.render("reviews", { allReviews }); 
+    const response = await fetch("http://localhost:8000/books");
+    const data = await response.json();
+    
+    const allReviews = data; 
+
+    res.render("reviews", { allReviews });
   } catch (error) {
     res.status(500).json({ error: "Error fetching review" });
   }

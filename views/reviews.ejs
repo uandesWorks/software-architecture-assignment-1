@@ -37,7 +37,7 @@
                 <% allReviews.forEach((element, index) => { %>
                     <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                         <td class="w-2/12 py-3 px-6 whitespace-nowrap">
-                            <span class="font-medium"><%= element.book_id %></span>
+                            <span class="font-medium"><%= element.book.name %></span>
                         </td>
                         <td class="w-7/12 py-3 px-6">
                             <span><%= element.review %></span>

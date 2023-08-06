@@ -5,6 +5,11 @@ const Author = require("../models/Author");
 exports.createBook = async (req, res) => {
    try {
       const book = new Book(req.body);
+      const authorName = await Author.findById(book.author._id, 'name');
+      if (!authorName) {
+        return res.status(404).json({ error: "Author not found" });
+      }
+      book.author.name = authorName.name;
       await book.save();
       res.status(201).json(book);
    } catch (err) {

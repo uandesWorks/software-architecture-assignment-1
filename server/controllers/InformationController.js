@@ -16,13 +16,13 @@ exports.getAuthorsInformation = async (req, res) => {
 
          // publishedBooksCount
          const publishedBooks = await Book.find({
-           author_id: author._id,
+           'author._id': author._id
          });
          const publishedBooksCount = publishedBooks.length;
 
          // averageScore
          const reviews = await Review.find({
-            book_id: { $in: publishedBooks.map((book) => book._id) },
+            'book._id': { $in: publishedBooks.map((book) => book._id) },
           });
          const totalReviews = reviews.length;
          const totalScore = reviews.reduce(
@@ -33,7 +33,7 @@ exports.getAuthorsInformation = async (req, res) => {
 
          // totalSales
          const sales = await Sale.find({
-            book_id: { $in: publishedBooks.map((book) => book._id) },
+            'book._id': { $in: publishedBooks.map((book) => book._id) },
          });
 
          const totalSales = sales.reduce(
@@ -88,10 +88,10 @@ exports.getTopRatedBooks = async (req, res) => {
   const topBooks = await Promise.all(
     books.map(async (book) => {
       const bookName = book.name;
-      const reviews = await Review.find({ book_id: book._id });
+      const reviews = await Review.find({ 'book._id': book._id });
       const totalReviews = reviews.length;
 
-      const positiveReviews = await Review.find({book_id: book._id});
+      const positiveReviews = await Review.find({'book._id': book._id});
       var topPositiveReview = positiveReviews.sort((a, b) => b.score - a.score);
       const highestScore = topPositiveReview[0].score;
       topPositiveReview = topPositiveReview.filter((review) => review.score === highestScore);
@@ -101,7 +101,7 @@ exports.getTopRatedBooks = async (req, res) => {
 
       
 
-      const negativeReviews = await Review.find({book_id: book._id});
+      const negativeReviews = await Review.find({'book._id': book._id});
       var topNegativeReview = negativeReviews.sort((a, b) => a.score - b.score);
       const lowestScore = topNegativeReview[0].score;
       topNegativeReview = topNegativeReview.filter((review) => review.score === lowestScore);
@@ -147,7 +147,7 @@ exports.top50SellingBooks = async (req, res) => {
          books.map(async (book) => {
 
            // total sales for the author
-           const authorBooks = await Book.find({ author_id: book.author_id });
+           const authorBooks = await Book.find({ 'author._id': book.author._id });
            const totalAuthorSales = authorBooks.reduce(
              (total, book) => total + book.sales,
              0
@@ -161,7 +161,7 @@ exports.top50SellingBooks = async (req, res) => {
                .limit(5);
             
             const top5BookIds = highestSales.map((sale) =>
-              sale.book_id.toString()
+              sale.book._id.toString()
             );
             const isTop5 = top5BookIds.includes(book._id.toString())
               

@@ -28,9 +28,8 @@
                             Publication Date
                         </div>
                         <div>
-                            <input id="editPublicationDate" class="border border-black w-full px-2 py-1" type="date">
+                            <input id="editPublicationDate" class="border border-black w-full px-2 py-1" placeholder="2023-03-23" type="timestamp">
                         </div>
-                        <span id="editPublicationDateString" class="text-left w-full px-2 py-1">asddas</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="mb-1">
@@ -206,7 +205,6 @@
     let editName = document.getElementById("editName")
     let editSummary = document.getElementById("editSummary")
     let editPublicationDate = document.getElementById("editPublicationDate")
-    let editPublicationDateString = document.getElementById("editPublicationDateString")
     let editSales = document.getElementById("editSales")
 
     let editSvgs = document.querySelectorAll(".editSvg");
@@ -219,8 +217,6 @@
             editName.value = editSvg.attributes.name.value
             editSummary.value = editSvg.attributes.summary.value
             editPublicationDate.value = editSvg.attributes.publication_date.value
-            editPublicationDateString.innerHTML = editSvg.attributes.publication_date.value
-            editPublicationDateString.classList.remove("hidden")
             editSales.value = editSvg.attributes.sales.value
             createEditModal.classList.toggle("hidden");
             authorString.innerHTML = editSvg.attributes.author.value
@@ -236,7 +232,6 @@
         editName.value = ""
         editSummary.value = ""
         editPublicationDate.value = ""
-        editPublicationDateString.classList.add("hidden")
         editSales.value = ""
         createEditModal.classList.toggle("hidden");
         dropdownMenu.classList.add("hidden")

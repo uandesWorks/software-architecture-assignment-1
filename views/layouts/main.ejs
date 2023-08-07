@@ -65,13 +65,25 @@
          </div>
       </div>
       <div id="searchNavbar" class="flex w-[30%] justify-end pr-10">
-         <input class="w-[50%] h-10 border border-black my-auto px-3 rounded-lg" type="text">
+         <input id="textInput" class="w-[50%] h-10 border border-black my-auto px-3 rounded-lg" type="text">
          <div class="text-xl h-10 my-auto ml-4">
             <button class="border h-full px-3 py-auto rounded-lg border-black bg-gray-100 hover:bg-gray-300">
-               <a href="/searchView" class="w-full h-full"> Search </a>
+               <a href="#" class="w-full h-full" id="submitButton"> Search </a>
             </button>
          </div>
       </div>
+      <script>
+         document.getElementById("submitButton").addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const inputValue = document.getElementById("textInput").value;
+            const linkElement = document.getElementById("submitButton");
+
+            linkElement.href = "/searchView/?description="+inputValue;
+
+            window.location.href = linkElement.href;
+         });
+      </script>
    </header>
    <div id="modal" class="z-50 absolute flex justify-center top-0 w-screen h-screen hidden select-none">
       <div class="flex justify-center top-0 w-screen h-screen z-50">

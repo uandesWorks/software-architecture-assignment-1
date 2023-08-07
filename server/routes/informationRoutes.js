@@ -10,7 +10,7 @@ router.get("/authors", informationController.getAuthorsInformation);
 router.get("/top50SellingBooks", informationController.top50SellingBooks);
 
 // Search Books By Description
-router.get("/searchbooks", informationController.searchByDescription);
+router.post("/searchbooks", informationController.searchByDescription);
 
 // Top Books by Score
 router.get("/top-rated-books", informationController.getTopRatedBooks);

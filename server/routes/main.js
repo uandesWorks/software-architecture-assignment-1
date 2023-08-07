@@ -81,8 +81,29 @@ router.get("/informationView", async (req, res) => {
   }
 });
 
-router.get("/searchView", (req, res) => {
-  res.render("search");
+router.get("/searchView", async (req, res) => {
+  const description = req.query.description;
+  try {
+    
+    const insideBody = { search: description }
+
+
+    const response = await fetch("http://localhost:8000/information/searchbooks", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(insideBody), 
+    });
+
+    const data = await response.json();
+
+    const coincidences = data; 
+
+    res.render("search", { coincidences }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching search" });
+  }
 });
 
 module.exports = router;

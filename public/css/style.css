@@ -554,6 +554,9 @@ video {
 .mt-5 {
   margin-top: 1.25rem;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .flex {
   display: flex;
 }
@@ -607,6 +610,15 @@ video {
 }
 .h-screen {
   height: 100vh;
+}
+.max-h-96 {
+  max-height: 24rem;
+}
+.max-h-\[80vh\] {
+  max-height: 80vh;
+}
+.max-h-\[75vh\] {
+  max-height: 75vh;
 }
 .w-1\/12 {
   width: 8.333333%;

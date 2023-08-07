@@ -119,7 +119,7 @@
                                         <path d="M5 20H19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
-                                <div id="<%=element.id%>" class="deleteSvg w-8 h-8 cursor-pointer">
+                                <div id="<%=element._id%>" class="deleteSvg w-8 h-8 cursor-pointer">
                                     <svg viewBox="0 0 24 24" fill="none">
                                         <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -140,6 +140,7 @@
 <script>
 
     let createButton = document.getElementById("createButton")
+    let confirmDelete = document.getElementById("confirmDelete")
     let modal = document.getElementById("modal")
     let createEditHeader = document.getElementById("createEditHeader")
     let confirmCreate = document.getElementById("confirmCreate")
@@ -205,7 +206,22 @@
         createEditModal.classList.toggle("hidden");
     });
 
-    
+    confirmDelete.addEventListener("click", async function () {
+        try {
+            const response = await fetch("books/"+modal.id, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                const savedData = await response.json();
+                location.reload();
+            } else {
+                alert("Error al guardar los datos en el servidor.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
     
 
 </script>

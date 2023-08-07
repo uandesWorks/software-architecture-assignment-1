@@ -91,12 +91,12 @@ exports.deleteSale = async (req, res) => {
       return res.status(404).json({ message: "Sale not found" });
     }
 
-    const book = await Book.findById(sale.book_id);
+    const book = await Book.findById(sale.book._id);
     if (!book) {
       return res.status(404).json({ error: "Book not found" });
     }
 
-    await Book.findByIdAndUpdate(sale.book_id, {
+    await Book.findByIdAndUpdate(sale.book._id, {
       $inc: { sales: -sale.sales },
     });
     res.json({ message: "Sale deleted successfully" });

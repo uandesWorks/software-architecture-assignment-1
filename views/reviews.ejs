@@ -14,7 +14,7 @@
                         <div class="relative z-30">
                             <button id="dropdownToggle" class="w-full text-left border px-2 py-1 border-black">
                                 <div>
-                                    <span id="authorString" class="text-base text-left">Select the Author..</span>
+                                    <span id="authorString" class="text-base text-left">Select the Book..</span>
                                 </div>
                             </button>
                             <ul id="dropdownMenu" class="absolute left-0 w-full mt-2 bg-white rounded shadow-lg hidden z-50 overflow-y-auto max-h-36">
@@ -165,7 +165,7 @@
         quitModalItem.addEventListener("click", function(){
             modal.classList.add("hidden");
             createEditModal.classList.add("hidden");
-            authorString.innerHTML = "Select Author.."
+            authorString.innerHTML = "Select Book.."
             insideId = ""
     })
     });
@@ -176,7 +176,7 @@
         blackModalItem.addEventListener("click", function(){
             modal.classList.add("hidden");
             createEditModal.classList.add("hidden");
-            authorString.innerHTML = "Select Author.."
+            authorString.innerHTML = "Select Book.."
             insideId = ""
     })
     });

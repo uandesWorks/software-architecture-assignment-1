@@ -16,6 +16,7 @@
    ```
    npm run dev
    ```
+   Enter in this [url](http://localhost:8000) to see the web application
 
 ##  Populate Fake Data
 ```

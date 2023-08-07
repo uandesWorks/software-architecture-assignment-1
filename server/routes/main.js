@@ -46,12 +46,15 @@ router.get("/booksView", async (req, res) => {
 
 router.get("/reviewsView", async (req, res) => {
   try {
-    const response = await fetch("http://localhost:8000/reviews");
-    const data = await response.json();
-    
+    let response = await fetch("http://localhost:8000/reviews");
+    let data = await response.json();
     const allReviews = data; 
 
-    res.render("reviews", { allReviews });
+    response = await fetch("http://localhost:8000/books");
+    data = await response.json();
+    const allBooks = data; 
+
+    res.render("reviews", { allReviews, allBooks });
   } catch (error) {
     res.status(500).json({ error: "Error fetching review" });
   }
@@ -59,12 +62,15 @@ router.get("/reviewsView", async (req, res) => {
 
 router.get("/salesView", async (req, res) => {
   try {
-    const response = await fetch("http://localhost:8000/sales");
-    const data = await response.json();
-
+    let response = await fetch("http://localhost:8000/sales");
+    let data = await response.json();
     const allSales = data; 
 
-    res.render("sales", { allSales }); 
+    response = await fetch("http://localhost:8000/books");
+    data = await response.json();
+    const allBooks = data; 
+
+    res.render("sales", { allSales, allBooks }); 
   } catch (error) {
     res.status(500).json({ error: "Error fetching sales" });
   }

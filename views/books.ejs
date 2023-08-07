@@ -46,12 +46,12 @@
                         <div class="relative z-30">
                             <button id="dropdownToggle" class="w-full text-left border px-2 py-1 border-black">
                                 <div>
-                                    <span class="text-base text-left">Select the Author..</span>
+                                    <span id="authorString" class="text-base text-left">Select the Author..</span>
                                 </div>
                             </button>
                             <ul id="dropdownMenu" class="absolute left-0 w-full mt-2 bg-white rounded shadow-lg hidden z-50 overflow-y-auto max-h-36">
                                 <% allAuthors.forEach((element, index) => { %>
-                                    <li><a class="block px-4 text-gray-800 hover:bg-gray-200" ><%= element.name %></a></li>
+                                    <li><a id="<%= element._id %>" class="authorOption block px-4 text-gray-800 hover:bg-gray-200" ><%= element.name %></a></li>
                                 <% }) %>
                             </ul>
                         </div>
@@ -106,8 +106,9 @@
         <table>
             <thead>
                 <tr class=" sticky top-0 w-5/6 h-10 bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                    <th class="w-2/12 py-3 px-6 text-left">Name</th>
-                    <th class="w-6/12 py-3 px-6 text-left">Summary</th>
+                    <th class="w-2/12 py-3 px-6 text-left">Book Name</th>
+                    <th class="w-2/12 py-3 px-6 text-left">Author</th>
+                    <th class="w-4/12 py-3 px-6 text-left">Summary</th>
                     <th class="w-2/12 py-3 px-6 text-left">Publication Date</th>
                     <th class="w-1/12 py-3 px-6 text-left">Sales</th>
                     <th class="w-1/12 py-3 px-6 text-left"></th>
@@ -118,6 +119,9 @@
                     <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                         <td class="w-2/12 py-3 px-6 whitespace-nowrap">
                             <span class="font-medium"><%= element.name %></span>
+                        </td>
+                        <td class="w-2/12 py-3 px-6 whitespace-nowrap">
+                            <span class="font-medium"><%= element.author.name %></span>
                         </td>
                         <td class="w-6/12 py-3 px-6">
                             <span><%= element.summary %></span>
@@ -130,7 +134,7 @@
                         </td>
                         <td class="w-1/12 py-3 px-6">
                             <div class="flex justify-between px-2">
-                                <div name="<%=element.name%>" summary="<%=element.summary%>" publication_date="<%=element.publication_date%>" sales="<%=element.sales%>" class="editSvg w-9 h-9 cursor-pointer">
+                                <div name="<%=element.name%>" summary="<%=element.summary%>" publication_date="<%=element.publication_date%>" sales="<%=element.sales%>" author="<%=element.author.name%>" class="editSvg w-9 h-9 cursor-pointer">
                                     <svg viewBox="0 0 24 24" fill="none">
                                         <path d="M18.3785 8.44975L11.4637 15.3647C11.1845 15.6439 10.8289 15.8342 10.4417 15.9117L7.49994 16.5L8.08829 13.5582C8.16572 13.1711 8.35603 12.8155 8.63522 12.5363L15.5501 5.62132M18.3785 8.44975L19.7927 7.03553C20.1832 6.64501 20.1832 6.01184 19.7927 5.62132L18.3785 4.20711C17.988 3.81658 17.3548 3.81658 16.9643 4.20711L15.5501 5.62132M18.3785 8.44975L15.5501 5.62132" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M5 20H19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -155,7 +159,10 @@
 </div>
 
 <script>
-
+    let insideId;
+    const dropdownToggle = document.getElementById("dropdownToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    let authorString = document.getElementById("authorString");
     let createButton = document.getElementById("createButton")
     let confirmDelete = document.getElementById("confirmDelete")
     let modal = document.getElementById("modal")
@@ -170,6 +177,8 @@
         quitModalItem.addEventListener("click", function(){
             modal.classList.add("hidden");
             createEditModal.classList.add("hidden");
+            authorString.innerHTML = "Select Author.."
+            insideId = ""
     })
     });
 
@@ -179,9 +188,10 @@
         blackModalItem.addEventListener("click", function(){
             modal.classList.add("hidden");
             createEditModal.classList.add("hidden");
+            authorString.innerHTML = "Select Author.."
+            insideId = ""
     })
     });
-
 
 
     let deleteSvgs = document.querySelectorAll(".deleteSvg");
@@ -208,7 +218,8 @@
             editPublicationDate.value = editSvg.attributes.publication_date.value
             editSales.value = editSvg.attributes.sales.value
             createEditModal.classList.toggle("hidden");
-            
+            authorString.innerHTML = editSvg.attributes.author.value
+            dropdownMenu.classList.add("hidden")
         });
     });
 
@@ -221,6 +232,7 @@
         editPublicationDate.value = ""
         editSales.value = ""
         createEditModal.classList.toggle("hidden");
+        dropdownMenu.classList.add("hidden")
     });
 
     confirmDelete.addEventListener("click", async function () {
@@ -241,17 +253,18 @@
     });
     
     document.getElementById("confirmCreate").addEventListener("click", async (event) => {
-            
-            const editName = document.getElementById("editName")
-            const editSummary = document.getElementById("editSummary")
-            const editPublicationDate = document.getElementById("editPublicationDate")
-            const editSales = document.getElementById("editSales")
+            const editName = document.getElementById("editName").value
+            const editSummary = document.getElementById("editSummary").value
+            const editPublicationDate = document.getElementById("editPublicationDate").value
+            const editSales = document.getElementById("editSales").value
+            const insideAuthor = { _id: insideId} 
 
             const requestData = {
                 name: editName,
                 summary: editSummary,
                 publication_date: editPublicationDate,
                 sales: editSales,
+                author: insideAuthor
             };
             try {
                 const response = await fetch("books", {
@@ -271,15 +284,26 @@
             } catch (error) {
                 console.error("Error:", error);
             }
+            
         });
 
 
 
-    const dropdownToggle = document.getElementById("dropdownToggle");
-    const dropdownMenu = document.getElementById("dropdownMenu");
+    
+    
 
     dropdownToggle.addEventListener("click", function(){
         dropdownMenu.classList.toggle("hidden");
     })
+
+    let authorOption = document.querySelectorAll(".authorOption");
+
+        authorOption.forEach((authorOptionItem) => {
+            authorOptionItem.addEventListener("click", function(){
+                dropdownMenu.classList.toggle("hidden");
+                authorString.innerHTML = authorOptionItem.innerHTML
+                insideId = authorOptionItem.id
+        })
+    });
 
 </script>

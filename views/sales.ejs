@@ -208,5 +208,35 @@
         }
     });
     
+     document.getElementById("confirmCreate").addEventListener("click", async (event) => {
+
+            const editName = document.getElementById("editName")
+            const editYear = document.getElementById("editYear")
+            const editSales = document.getElementById("editSales")
+
+            const requestData = {
+                name: editName,
+                review: editYear,
+                score: editSales,
+            };
+            try {
+                const response = await fetch("reviews", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData),
+                });
+
+                if (response.ok) {
+                    const savedData = await response.json();
+                    location.reload();
+                } else {
+                    alert("Error al guardar los datos en el servidor.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
 
 </script>

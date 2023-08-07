@@ -75,7 +75,7 @@
    </header>
    <div id="modal" class="z-50 absolute flex justify-center top-0 w-screen h-screen hidden select-none">
       <div class="flex justify-center top-0 w-screen h-screen z-50">
-          <div id="blackModal" class="absolute top-0  w-full h-full bg-black opacity-80 z-50"></div>
+          <div class="blackModal absolute top-0  w-full h-full bg-black opacity-80 z-50"></div>
           <div class="absolute z-50 opacity-100 w-2/5">
               <div class="absolute w-full bg-white rounded top-[50vh] -translate-y-[75%] px-12 py-8">
                   <div class="text-3xl mb-7 my-auto font-semibold">
@@ -83,7 +83,7 @@
                   </div>
                   <div class="flex justify-between w-full">
                       <div class="w-2/5">
-                          <button id="quitModal" class="w-full border border-secundary bg-gray-50 hover:bg-gray-100 hover:border-white py-2 px-6 text-center text-lg font-medium rounded-lg select-none">
+                          <button class="quitModal w-full border border-secundary bg-gray-50 hover:bg-gray-100 hover:border-white py-2 px-6 text-center text-lg font-medium rounded-lg select-none">
                               No, cancel pls
                           </button>
                       </div>
@@ -96,6 +96,6 @@
               </div>
           </div>
       </div>
-  </div>
+   </div>
    <%- body%>
 </body>

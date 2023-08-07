@@ -43,7 +43,7 @@ router.get("/booksView", async (req, res) => {
 
 router.get("/reviewsView", async (req, res) => {
   try {
-    const response = await fetch("http://localhost:8000/books");
+    const response = await fetch("http://localhost:8000/reviews");
     const data = await response.json();
     
     const allReviews = data; 
@@ -56,15 +56,29 @@ router.get("/reviewsView", async (req, res) => {
 
 router.get("/salesView", async (req, res) => {
   try {
-    const allSales = await Sale.find();
+    const response = await fetch("http://localhost:8000/sales");
+    const data = await response.json();
+
+    const allSales = data; 
+
     res.render("sales", { allSales }); 
   } catch (error) {
     res.status(500).json({ error: "Error fetching sales" });
   }
 });
 
-router.get("/informationView", (req, res) => {
-  res.render("information");
+
+router.get("/informationView", async (req, res) => {
+  try {
+    const response = await fetch("http://localhost:8000/information/authors?sort=authorName&order=asc");
+    const data = await response.json();
+
+    const ascAuthorName = data["authorsData"]; 
+
+    res.render("information", { ascAuthorName }); 
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching sales" });
+  }
 });
 
 router.get("/searchView", (req, res) => {

@@ -205,16 +205,16 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    <% authorsDataTable.forEach((element, index) => { %>
+                    <% ascAuthorName.forEach((element, index) => { %>
                         <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                             <td class="w-3/12 py-3 px-6 whitespace-nowrap">
-                                <span class="font-medium"><%= element.authors %></span>
+                                <span class="font-medium"><%= element.authorName %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.booksNumber %></span>
+                                <span><%= element.publishedBooks %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.avgScore %></span>
+                                <span><%= element.averageScore %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
                                 <span><%= element.totalSales %></span>

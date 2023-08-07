@@ -69,13 +69,31 @@ router.get("/salesView", async (req, res) => {
 
 
 router.get("/informationView", async (req, res) => {
+  const description = req.query.description;
   try {
-    const response = await fetch("http://localhost:8000/information/authors?sort=authorName&order=asc");
-    const data = await response.json();
 
-    const ascAuthorName = data["authorsData"]; 
+    // Authors Data
+    const insideBody = { search: description };
 
-    res.render("information", { ascAuthorName }); 
+    const authors = await fetch("http://localhost:8000/information/authors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(insideBody),
+    });
+
+    const authorsData = await authors.json();
+
+    // Top 10 rated books
+    const ratedBooks = await fetch("http://localhost:8000/information/top-rated-books");
+    const ratedBooksData = await ratedBooks.json();
+
+    // Top 50 selling books
+    const sellingBooks = await fetch("http://localhost:8000/information/top50SellingBooks");
+    const sellingBooksData = await sellingBooks.json();
+
+    res.render("information", { authorsData, ratedBooksData, sellingBooksData }); 
   } catch (error) {
     res.status(500).json({ error: "Error fetching sales" });
   }

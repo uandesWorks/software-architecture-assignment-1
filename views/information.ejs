@@ -1,90 +1,3 @@
-<% authorsDataTable = [{authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 },
-                       {authors:"Leonardo Dicaprio", booksNumber: 33, avgScore: 4.2, totalSales: 2050232 },
-                       {authors:"Vicencio Da Vinchi", booksNumber: 15, avgScore: 3.3, totalSales: 111451 },
-                       {authors:"Andrew Itzjakolrs", booksNumber: 2, avgScore: 4.8, totalSales: 5161261 }]  %>
-
-<% topRatedBooks = [{book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
-                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
-                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
-                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
-                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
-                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
-                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." },
-                    {book:"Secrets of the universe", avgScore: 2.5, bestReview: "The incognit here is about..", worstReview: "Horrible." },
-                    {book:"Calculo II by Tata Sanchez", avgScore: 4.9, bestReview: "Easy way to learn Calculo..", worstReview: "I hate Maths, this is.." },
-                    {book:"I am the best", avgScore: 4.2, bestReview: "This book was amazing..", worstReview: "Maybe the author can.." }]  %>
-
-<% topSellingBooks = [{book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false },
-                      {book:"Calculo II by Tata Sanchez", totalBookSales: 11532, totalAuthorSales: 11532, topFiveInHisYear: true },
-                      {book:"I am the best", totalBookSales: 4613532, totalAuthorSales: 4613532, topFiveInHisYear: true },
-                      {book:"Secrets of the universe", totalBookSales: 63532, totalAuthorSales: 1523526, topFiveInHisYear: false }]%>
-
 <div class="flex flex-col justify-between bg-slate-200 h-[15vh] bg-opacity-50 select-none">
     <div class="w-full text-5xl font-semibold italic text-center pt-5">
         Information
@@ -205,7 +118,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    <% ascAuthorName.forEach((element, index) => { %>
+                    <% authorsData.authorsData.forEach((element, index) => { %>
                         <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                             <td class="w-3/12 py-3 px-6 whitespace-nowrap">
                                 <span class="font-medium"><%= element.authorName %></span>
@@ -299,19 +212,19 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    <% topRatedBooks.forEach((element, index) => { %>
+                    <% ratedBooksData.topTenBook.forEach((element, index) => { %>
                         <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                             <td class="w-3/12 py-3 px-6 whitespace-nowrap">
-                                <span class="font-medium"><%= element.book %></span>
+                                <span class="font-medium"><%= element.bookName %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.avgScore %></span>
+                                <span><%= element.averageScore %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.bestReview %></span>
+                                <span><%= element.popularPositiveReview %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.worstReview %></span>
+                                <span><%= element.popularNegativeReview %></span>
                             </td>
                         </tr>
                     <% }) %>
@@ -340,13 +253,13 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    <% topSellingBooks.forEach((element, index) => { %>
+                    <% sellingBooksData.forEach((element, index) => { %>
                         <tr class=" border-b border-gray-100 hover:bg-gray-200 <%= (index % 2 === 0) ? 'bg-white' : 'bg-gray-50' %>">
                             <td class="w-3/12 py-3 px-6 whitespace-nowrap">
-                                <span class="font-medium"><%= element.book %></span>
+                                <span class="font-medium"><%= element.bookName %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
-                                <span><%= element.totalBookSales %></span>
+                                <span><%= element.totalSales %></span>
                             </td>
                             <td class="w-3/12 py-3 px-6">
                                 <span><%= element.totalAuthorSales %></span>

@@ -4,7 +4,7 @@ const informationController = require("../controllers/InformationController");
 const router = express.Router();
 
 // Authors data Table
-router.get("/authors", informationController.getAuthorsInformation);
+router.post("/authors", informationController.getAuthorsInformation);
 
 // Top 50 selling Books
 router.get("/top50SellingBooks", informationController.top50SellingBooks);

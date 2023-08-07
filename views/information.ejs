@@ -345,35 +345,45 @@
 
     }
 
-    function sortTable(orderString,column){
+    function sortTable(orderString, column) {
         const table = document.getElementById('myTable');
         const rows = table.rows;
         let sortedRows = [];
-    
+
         // Convertir las filas a un array para ordenarlas
         for (let i = 1; i < rows.length; i++) {
             sortedRows.push(rows[i]);
         }
-    
-        if (orderString == "asc"){
-            sortedRows.sort(function(a, b) {
+
+        if (orderString === "asc") {
+            sortedRows.sort(function (a, b) {
                 const aCellValue = a.cells[column].innerText;
                 const bCellValue = b.cells[column].innerText;
-                return aCellValue.localeCompare(bCellValue);
+
+                if (!isNaN(parseFloat(aCellValue)) && !isNaN(parseFloat(bCellValue))) {
+                    return parseFloat(aCellValue) - parseFloat(bCellValue);
+                } else {
+                    return aCellValue.localeCompare(bCellValue);
+                }
             });
         } else {
-            sortedRows.sort(function(a, b) {
+            sortedRows.sort(function (a, b) {
                 const aCellValue = a.cells[column].innerText;
                 const bCellValue = b.cells[column].innerText;
-                return bCellValue.localeCompare(aCellValue);
+
+                if (!isNaN(parseFloat(aCellValue)) && !isNaN(parseFloat(bCellValue))) {
+                    return parseFloat(bCellValue) - parseFloat(aCellValue);
+                } else {
+                    return bCellValue.localeCompare(aCellValue);
+                }
             });
         }
-    
+
         // Eliminar las filas existentes en la tabla
         while (table.rows.length > 1) {
             table.deleteRow(1);
         }
-    
+
         // Agregar las filas ordenadas a la tabla
         for (let i = 0; i < sortedRows.length; i++) {
             table.appendChild(sortedRows[i]);

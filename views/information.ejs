@@ -350,7 +350,6 @@
         const rows = table.rows;
         let sortedRows = [];
 
-        // Convertir las filas a un array para ordenarlas
         for (let i = 1; i < rows.length; i++) {
             sortedRows.push(rows[i]);
         }
@@ -379,12 +378,10 @@
             });
         }
 
-        // Eliminar las filas existentes en la tabla
         while (table.rows.length > 1) {
             table.deleteRow(1);
         }
 
-        // Agregar las filas ordenadas a la tabla
         for (let i = 0; i < sortedRows.length; i++) {
             table.appendChild(sortedRows[i]);
         }

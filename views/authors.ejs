@@ -20,8 +20,9 @@
                             Birth
                         </div>
                         <div>
-                            <input id="editBirth" class="border border-black w-full px-2 py-1" type="text">
+                            <input id="editBirth" class="border border-black w-full px-2 py-1" type="date">
                         </div>
+                        <span id="editBirthString" class="text-left w-full px-2 py-1">asddas</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="mb-1">
@@ -178,6 +179,7 @@
 
     let editName = document.getElementById("editName")
     let editBirth = document.getElementById("editBirth")
+    let editBirthString = document.getElementById("editBirthString")
     let editCountry = document.getElementById("editCountry")
     let editDescription = document.getElementById("editDescription")
 
@@ -190,6 +192,8 @@
             confirmEdit.classList.remove("hidden")
             editName.value = editSvg.attributes.name.value
             editBirth.value = editSvg.attributes.birth.value
+            editBirthString.innerHTML = editSvg.attributes.birth.value
+            editBirthString.classList.remove("hidden")
             editCountry.value = editSvg.attributes.country.value
             editDescription.value = editSvg.attributes.description.value
             createEditModal.classList.toggle("hidden");
@@ -203,6 +207,7 @@
         confirmEdit.classList.add("hidden")
         editName.value = ""
         editBirth.value = ""
+        editBirthString.classList.add("hidden")
         editCountry.value = ""
         editDescription.value = ""
         createEditModal.classList.toggle("hidden");

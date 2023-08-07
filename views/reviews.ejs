@@ -222,4 +222,37 @@
         }
     });
 
+    document.getElementById("confirmCreate").addEventListener("click", async (event) => {
+            
+            const editName = document.getElementById("editName")
+            const editReview = document.getElementById("editReview")
+            const editScore = document.getElementById("editScore")
+            const editUpVotes = document.getElementById("editUpVotes")
+
+            const requestData = {
+                name: editName,
+                review: editReview,
+                score: editScore,
+                up_votes: editUpVotes,
+            };
+            try {
+                const response = await fetch("reviews", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData),
+                });
+
+                if (response.ok) {
+                    const savedData = await response.json();
+                    location.reload();
+                } else {
+                    alert("Error al guardar los datos en el servidor.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+
 </script>

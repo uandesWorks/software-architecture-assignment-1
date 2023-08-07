@@ -39,6 +39,23 @@
                             <input id="editSales" class="border border-black w-full px-2 py-1" type="text">
                         </div>
                     </div>
+                    <div class="w-full">
+                        <div class="mb-1">
+                            Author
+                        </div>
+                        <div class="relative z-30">
+                            <button id="dropdownToggle" class="w-full text-left border px-2 py-1 border-black">
+                                <div>
+                                    <span class="text-base text-left">Select the Author..</span>
+                                </div>
+                            </button>
+                            <ul id="dropdownMenu" class="absolute left-0 w-full mt-2 bg-white rounded shadow-lg hidden z-50 overflow-y-auto max-h-36">
+                                <% allAuthors.forEach((element, index) => { %>
+                                    <li><a class="block px-4 text-gray-800 hover:bg-gray-200" ><%= element.name %></a></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex justify-between w-full">
                     <div class="w-2/5">
@@ -135,8 +152,8 @@
             </tbody>
         </table>
     </div>
-
 </div>
+
 <script>
 
     let createButton = document.getElementById("createButton")
@@ -255,5 +272,14 @@
                 console.error("Error:", error);
             }
         });
+
+
+
+    const dropdownToggle = document.getElementById("dropdownToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    dropdownToggle.addEventListener("click", function(){
+        dropdownMenu.classList.toggle("hidden");
+    })
 
 </script>

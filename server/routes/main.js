@@ -30,12 +30,15 @@ router.get("/authorsView", async (req, res) => {
 
 router.get("/booksView", async (req, res) => {
   try {
-    const response = await fetch("http://localhost:8000/books");
-    const data = await response.json();
-    
+    let response = await fetch("http://localhost:8000/authors");
+    let data = await response.json();
+    const allAuthors = data; 
+
+    response = await fetch("http://localhost:8000/books");
+    data = await response.json();
     const allBooks = data; 
 
-    res.render("books", { allBooks });
+    res.render("books", { allBooks, allAuthors });
   } catch (error) {
     res.status(500).json({ error: "Error fetching books" });
   }

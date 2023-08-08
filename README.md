@@ -4,9 +4,9 @@
 ## Installation
 1. Create file called `.env` in the main folder of the project and add the `credentials` that we will pass in the `Report`.
 2. Install Dependencies
-   ```
-   npm install
-   ```
+```
+npm install
+```
 `NOTE:` Maybe Your Computer need to install one of the dependencies in admin mode
    ```
    npm install -g nodemon

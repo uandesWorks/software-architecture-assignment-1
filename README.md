@@ -2,7 +2,7 @@
 
 
 ## Installation
-1. Create file called `.env` in the main folder of the project and add the credentials that we will pass in `Canvas or Slack`.
+1. Create file called `.env` in the main folder of the project and add the `credentials` that we will pass in the `Report`.
 2. Install Dependencies
    ```
    npm install

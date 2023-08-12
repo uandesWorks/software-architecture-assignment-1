@@ -18,6 +18,12 @@ npm install
    ```
    Enter in this [url](http://localhost:8000) to see the web application
 
+## Run App with docker
+   ```
+   docker-compose up
+   ```
+   Enter in this [url](http://localhost:8000) to see the web application
+
 ##  Populate Fake Data
 ```
 npm run seedData
